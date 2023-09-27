@@ -37,6 +37,15 @@ PRT* (Port X?)
 
 DGPS= One/Zero
 
+[Write Embedded Controller]
+PCI0.SBRG.EC0.WEBC
+
+[Set User Fan Control]
+PCI0.SBRG.EC0.SUFC
+
+[Get Default Fan Control]
+PCI0.SBRG.EC0.GDFC
+
 [WMI Methods IDs]
 
   [WmiMethodId(1414090313), Implemented] void INIT([in] uint32 State, [out] uint32 Status);
@@ -76,4 +85,11 @@ USB 1-3 = N-Key
 0x4647574D (OFBD/ASMI?, Unknown)
 0x53545344 (Device Status DSTS)
 0x53564544 (Device Policy)
+
+[ Address Bits ]
+0x00010000 = Presence Bit
+0x00010001 = Status Bit
+0x00010002 = Unknown Bit
+0x00010003 = ???
+
 

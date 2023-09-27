@@ -30,6 +30,8 @@ RHUB (Root Hub)
 XHC* (XHCI)
 PRT* (Port X?)
 
+ACNG (Charge Status)
+
 [EGPU Power States]
 
 \_SB.PCI0.GPP0.M237._ON ()
@@ -39,6 +41,9 @@ DGPS= One/Zero
 
 [Write Embedded Controller]
 PCI0.SBRG.EC0.WEBC
+
+[Read Embedded Controller]
+PCI0.SBRG.EC0.REBC
 
 [Set User Fan Control]
 PCI0.SBRG.EC0.SUFC
@@ -91,5 +96,11 @@ USB 1-3 = N-Key
 0x00010001 = Status Bit
 0x00010002 = Unknown Bit
 0x00010003 = ???
+
+
+[ ACPI Commands]
+
+Acquire CMUT (Lock Address?)
+Release CMUT (Unlock Address?)
 
 

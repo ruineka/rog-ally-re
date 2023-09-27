@@ -59,3 +59,21 @@ DGPS= One/Zero
 
 USB 1-2 = Gamepad
 USB 1-3 = N-Key
+
+[Method ID DSDT Extract]
+
+0x54494E49 (Initalize)
+0x53545342 (Bios Status)
+0x4E554653 (Set First Boot Device)
+0x474F4457 (Watchdog Timer)
+0x494E424B (Keyboard Notification)
+0x47444353 (Calibration Data)
+0x43455053 (Bios Specification)
+0x5256534F (OS Version)
+0x53524556 (Bios Version)
+0x44434C47 (Get LCD Status)
+0x49564E41 (Sleep Mode/SLP Mode)
+0x4647574D (OFBD/ASMI?, Unknown)
+0x53545344 (Device Status DSTS)
+0x53564544 (Device Policy)
+

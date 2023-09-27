@@ -103,4 +103,7 @@ USB 1-3 = N-Key
 Acquire CMUT (Lock Address?)
 Release CMUT (Unlock Address?)
 
+[ Keyboard IIA0]
+0x00100021
+
 

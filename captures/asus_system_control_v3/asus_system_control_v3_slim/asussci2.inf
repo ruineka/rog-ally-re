@@ -1,0 +1,86 @@
+;======================================================================
+;
+; Copyright (c) ASUSTek Computer Inc. (2018)
+;
+; Module Name:
+;     asussci2.inf
+;
+; Abstract:
+;     INF file for installing ASUS System Control Interface v3
+;
+; Installation Notes:
+;     	
+;======================================================================
+[Version]
+Signature = "$Windows NT$"
+Class = System
+ClassGUID = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider = "ASUSTeK COMPUTER INC."
+DriverVer = 08/18/2023,3.1.18.0
+CatalogFile.ntamd64 = asussci2.cat
+
+
+[Manufacturer]
+%MfgName% = ASUP, ntamd64
+
+[ASUP.ntamd64]
+%DeviceDesc1% = NO_DRV64, ACPI\ASUS2018
+
+[NO_DRV64]
+Include = machine.inf
+Needs = NO_DRV
+CopyFiles = PackageCopyOptimization	      	  ;Optimization service
+
+[NO_DRV64.Services]
+Include = machine.inf
+Needs = NO_DRV.Services
+AddService = ATKWMIACPIIO, , Optimization_Drv_ServiceInstall							;Optimization driver
+AddService = ASUSOptimization, 0x00000800, Optimization_Srv_ServiceInstall				;Optimization service
+
+[DestinationDirs]
+DefaultDestDir 		    		  = 13
+PackageCopySoftwareManagerLicense = 13,%AsusSoftwareManagerLicenseFolder%   ;Software Manager service
+PackageCopyOptimization	          = 13,%OptimizationFolder%       			;Optimization service
+
+
+
+; ==============================================================
+;                    Optimization service                         
+; ==============================================================
+[PackageCopyOptimization]
+AsusHotkey.exe
+AsusOptimization.exe
+AsusWmiAcpi.sys
+ASUS Optimization 36D18D69AFC3.xml
+
+[Optimization_Drv_ServiceInstall]
+DisplayName    = "ATKWMIACPI Driver"
+ServiceBinary  = %13%\%OptimizationFolder%\AsusWmiAcpi.sys
+ServiceType    = 1
+StartType      = 1
+ErrorControl   = 1
+
+[Optimization_Srv_ServiceInstall]
+DisplayName    = "ASUS Optimization"
+ServiceBinary  = %13%\%OptimizationFolder%\AsusOptimization.exe
+ServiceType    = 16
+StartType      = 2
+ErrorControl   = 1
+LoadOrderGroup = ShellSvcGroup
+
+[SourceDisksFiles]
+; ================== Optimization service, diskid = 5 ===========================
+AsusHotkey.exe = 5
+AsusOptimization.exe = 5
+AsusWmiAcpi.sys = 5
+ASUS Optimization 36D18D69AFC3.xml = 5
+
+
+[SourceDisksNames]
+1  = %MfgName%,,,
+5  = %MfgName%,,,\%OptimizationFolder%					;Optimization service, diskid = 5
+
+[Strings]
+MfgName								= "ASUS"
+DeviceDesc1    						= "ASUS System Control Interface v3"
+OptimizationFolder					= "ASUSOptimization"

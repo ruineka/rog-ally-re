@@ -1,0 +1,39 @@
+it fucking works!! I've tested it dozens of times, it works flawlessly! WagesOf script and this service file: deck@rog-ally ~ $
+
+put this in /lib/systemd/system-sleep/systemd-suspend-nkeyfix.sh
+#!/bin/bash
+
+case "$1" in
+    pre)
+            #code execution BEFORE sleeping/hibernating/suspending
+    ;;
+    post)
+           sleep 2
+           echo "Post suspend check for N-Key" > /dev/kmsg
+           if grep -Fxq 'ROG Ally' "/sys/devices/virtual/dmi/id/product_family" ; then
+                if [[ $(lsusb | grep "0b05:1abe") == "" ]]; then
+            echo "Post suspend reinit to find N-Key" > /dev/kmsg
+             echo platform > /sys/power/pm_test
+                    echo freeze > /sys/power/state
+                    echo none > /sys/power/pm_test
+                 fi
+            fi
+
+    ;;
+esac
+
+
+cat scripts/fuckasus.service
+```sh
+[Unit]
+Description=Try to get back the ROG Ally special keys
+After=sleep.target suspend.target
+
+[Service]
+ExecStart=/home/deck/scripts/fuckasus.sh
+
+[Install]
+WantedBy=sleep.target suspend.target
+```
+
+for some reason it wasn't executed on /lib/systemd/system/system-sleep

@@ -1,5 +1,8 @@
 Asus ALLY ACPI Names
 
+Useful Links:
+https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/bringup/firmware-requirements-for-d3cold.md
+
 WMI GUID = GUID("{97845ED0-4E6D-11DE-8A39-0800200C9A66}")]
 
 INIT (Initalize Status/States)

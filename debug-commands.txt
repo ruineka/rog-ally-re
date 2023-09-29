@@ -79,6 +79,14 @@ echo '\_SB_.PCI0.SBRG.EC0._QDE' > /proc/acpi/call (This will send the power butt
 # Send WMI keyboard events by ACPI Call
 echo '\_SB_.ATKD.IANE' 0x31 > /proc/acpi/call (Send volume down button)
 
+# Notes
+
+[  452.924029] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0c:00.4: --> PCI D3cold
+[  452.924245] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0c:00.3: --> PCI D3cold
+[  452.924322] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0a:00.4: --> PCI D3cold
+[  452.939168] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0a:00.3: --> PCI D3cold
+
+
 
 
 

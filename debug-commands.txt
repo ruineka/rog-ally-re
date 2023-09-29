@@ -124,6 +124,25 @@ Bus 001 Device 003: ID 0b05:1abe ASUSTek Computer, Inc. N-KEY Device
 Bus 001 Device 002: ID 045e:028e Microsoft Corp. Xbox360 Controller
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
+# Set PCI states
+[00, 03]
+setpci -s 0a:00.3 CAP_PM+4.b=03
+echo 1 > /sys/bus/pci/rescan
+
+# Check Power States
+grep -H . /sys/bus/pci/devices/0000\:0a\:00.3/firmware_node/power_state
+grep -H . /sys/bus/pci/devices/0000\:0a\:00.3/firmware_node/real_power_state
+
+# Find path
+
+cat /sys/bus/usb/devices/1-3/firmware_node/path 
+\_SB_.PCI0.GP17.XHC0.RHUB.PRT3
+
+cat /sys/bus/usb/devices/1-2/firmware_node/path 
+\_SB_.PCI0.GP17.XHC0.RHUB.PRT2
+
+
+
 
 
 

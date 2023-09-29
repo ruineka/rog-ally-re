@@ -86,6 +86,45 @@ echo '\_SB_.ATKD.IANE' 0x31 > /proc/acpi/call (Send volume down button)
 [  452.924322] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0a:00.4: --> PCI D3cold
 [  452.939168] usbcore:hcd_pci_suspend_noirq:552: xhci_hcd 0000:0a:00.3: --> PCI D3cold
 
+ASUS
+
+0a:00.3 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:15b9] (prog-if 30 [XHCI])
+	Subsystem: ASUSTeK Computer Inc. Device [1043:201f]
+	Flags: bus master, fast devsel, latency 0, IRQ 43, IOMMU group 21
+	Memory at fc500000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: [48] Vendor Specific Information: Len=08 <?>
+	Capabilities: [50] Power Management version 3
+	Capabilities: [64] Express Endpoint, MSI 00
+	Capabilities: [a0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+	Capabilities: [c0] MSI-X: Enable- Count=1 Masked-
+	Capabilities: [100] Vendor Specific Information: ID=0001 Rev=1 Len=010 <?>
+	Capabilities: [2a0] Access Control Services
+	Kernel driver in use: xhci_hcd
+	Kernel modules: xhci_pci
+
+0a:00.4 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD] Device [1022:15ba] (prog-if 30 [XHCI])
+	Subsystem: ASUSTeK Computer Inc. Device [1043:201f]
+	Flags: fast devsel, IRQ 44, IOMMU group 22
+	Memory at fc400000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: [48] Vendor Specific Information: Len=08 <?>
+	Capabilities: [50] Power Management version 3
+	Capabilities: [64] Express Endpoint, MSI 00
+	Capabilities: [a0] MSI: Enable- Count=1/1 Maskable- 64bit+
+	Capabilities: [c0] MSI-X: Enable- Count=1 Masked-
+	Capabilities: [100] Vendor Specific Information: ID=0001 Rev=1 Len=010 <?>
+	Capabilities: [2a0] Access Control Services
+	Kernel modules: xhci_pci
+
+
+# unbind this to remove these devices
+echo "0000:0a:00.3" > /sys/bus/pci/drivers/xhci_hcd/unbind 
+
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 003: ID 0b05:1abe ASUSTek Computer, Inc. N-KEY Device
+Bus 001 Device 002: ID 045e:028e Microsoft Corp. Xbox360 Controller
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+
 
 
 

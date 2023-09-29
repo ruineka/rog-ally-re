@@ -106,4 +106,167 @@ Release CMUT (Unlock Address?)
 [ Keyboard IIA0]
 0x00100021
 
+[ DSDT Decipher...]
+
+        OperationRegion (ACPO, SystemMemory, ACPB, 0x1B)
+        Field (ACPO, AnyAcc, NoLock, Preserve)
+        {
+            ACPS,   32, 
+            SMIF,   8, (Sleep mode Info)
+            ALPR,   32, 
+            TMPB,   8, 
+            INSK,   8, 
+            WLDP,   8, (Wireless Lan?)
+            BTDP,   8, (Bluetooth?)
+            APSC,   8, 
+            AEDS,   8, 
+            NDOD,   8, 
+            AGGS,   8, 
+            ABIS,   8, 
+            CAB1,   32, 
+            CAB2,   32, 
+            CCNT,   8
+        }
+        
+        Name (ATKP, Zero) (Keyboard Device)
+        Name (AITM, Zero) (Not Used)
+        Name (PLMD, Zero) (Not Used)
+        Name (MUTX, One) (Not Used)
+        Name (LEDS, Zero) (Not Used
+        Name (FNIV, Zero) (KINI call, Keyboard Init??)
+        Name (ACPT, Zero) (External graphics related)
+        Name (GPCE, Zero) (Graphics Control?)
+        Name (WOSR, Zero) (Keyboard Related? GPU Related?)
+
+        Method (WAT1, 0, Serialized)
+        {
+            Local0 = Zero
+            While ((WOSR == One))
+            {
+                Sleep (0x64)
+                Local0 = (One + Local0)
+                If ((Local0 == 0xC8))
+                {
+                    WOSR = Zero
+                    If (ATKP)
+                    {
+                        ^ATKD.IANE (0xBC)
+                    }
+
+                    Return (One)
+                }
+            }
+
+            Return (Zero)
+        }
+        
+        
+[ WMI Device With on/off UNKNOWN]
+
+0x0012007E (RMSA) (Set by 0x0012007E during 0x53564544 (Device Polcy) and used by 0x535345344 (Device Status DSDT) Has EC writes that might be interesting
+0x00060026 (PCI0.SBRG.EC0.STA8) (If value is 0x04 then enable)
+0x00130022 (APSC) (Set by 0x00130022 during 0x53564544 (Device Policy) and used by 0x53545344 (Device Status DSTS)
+0x00100051 (No Reference)
+
+[ Complete Device Status List ]
+                    If ((IIA0 == 0x00010002))
+                    If ((IIA0 == 0x00010011))
+                    If ((IIA0 == 0x00010013))
+                    If ((IIA0 == 0x00080041))
+                    If ((IIA0 == 0x00080042))
+                    If ((IIA0 == 0x00080043))
+                    If ((IIA0 == 0x00080044))
+                    If ((IIA0 == 0x00110024))
+                    If ((IIA0 == 0x00110025))
+                    If ((IIA0 == 0x00110026))
+                    If ((IIA0 == 0x00110027))
+                    If ((IIA0 == 0x001200A0))
+                    If ((IIA0 == 0x001200A1))
+                    If ((IIA0 == 0x001200A2))
+                    If ((IIA0 == 0x001200A3))
+                    If ((IIA0 == 0x001200B0))
+                    If ((IIA0 == 0x001200B1))
+                    If ((IIA0 == 0x001200C1))
+                    If ((IIA0 == 0x00120079))
+                    If ((IIA0 == 0x00120094))
+                    If ((IIA0 == 0x00120097))
+                    If ((IIA0 == 0x00060061))
+                    If ((IIA0 == 0x00130022))
+                    If ((IIA0 == 0x00130021))
+                    If ((IIA0 == 0x0006005B))
+                    If ((IIA0 == 0x00130026))
+                    If ((IIA0 == 0x00090017))
+                    If ((IIA0 == 0x00090018))
+                    If ((IIA0 == 0x00090019))
+                    If ((IIA0 == 0x0009001A))
+                    If ((IIA0 == 0x0009001C))
+                    If ((IIA0 == 0x00090020))
+                    If ((IIA0 == 0x00090030))
+                    If ((IIA0 == 0x001200C0))
+                    If ((IIA0 == 0x001200C2))
+                    If ((IIA0 == 0x000600C1))
+                    If ((IIA0 == 0x00110013))
+                    If ((IIA0 == 0x00110014))
+                    If ((IIA0 == 0x00010001))
+                    If ((IIA0 == 0x00120061))
+                    If ((IIA0 == 0x00060077))
+                    If ((IIA0 == 0x00110015))
+                    If ((IIA0 == 0x00110016))
+                    If ((IIA0 == 0x00100051))
+                    If ((IIA0 == 0x00120057))
+                    If ((IIA0 == 0x00110022))
+                    If ((IIA0 == 0x00110023))
+                    If ((IIA0 == 0x00120075))
+                    If ((IIA0 == 0x0012007A))
+                    If ((IIA0 == 0x00060059))
+                    If ((IIA0 == 0x0012007E))
+                    If ((IIA0 == 0x00060023))
+                    If ((IIA0 == 0x00060024))
+                    If ((IIA0 == 0x00060026))
+                    If ((IIA0 == 0x00130031))
+                    If ((IIA0 == 0x0012006C))
+                    If ((IIA0 == 0x001200E2))
+[ Complete Device Policy List ]
+                    If ((IIA0 == 0x00010012))
+                    If ((IIA0 == 0x00010013))
+                    If ((IIA0 == 0x00010003))
+                    If ((IIA0 == 0x0006005B))
+                    If ((IIA0 == 0x00110024))
+                    If ((IIA0 == 0x00110025))
+                    If ((IIA0 == 0x001200A0))
+                    If ((IIA0 == 0x001200A1))
+                    If ((IIA0 == 0x001200A2))
+                    If ((IIA0 == 0x001200A3))
+                    If ((IIA0 == 0x001200B0))
+                    If ((IIA0 == 0x001200B1))
+                    If ((IIA0 == 0x001200C1))
+                    If ((IIA0 == 0x00130022))
+                    If ((IIA0 == 0x00090019))
+                    If ((IIA0 == 0x0009001A)){}
+                    If ((IIA0 == 0x00090020))
+                    If ((IIA0 == 0x001200C0))
+                    If ((IIA0 == 0x001200C2))
+                    If ((IIA0 == 0x00060096))
+                    If ((IIA0 == 0x000600C1))
+                    If ((IIA0 == 0x00050011))
+                    If ((IIA0 == 0x00100022))
+                    If ((IIA0 == 0x00100021))
+                    If ((IIA0 == 0x00110013))
+                    If ((IIA0 == 0x00110014))
+                    If ((IIA0 == 0x00110015))
+                    If ((IIA0 == 0x00110016))
+                    If ((IIA0 == 0x00120057))
+                    If ((IIA0 == 0x00110022))
+                    If ((IIA0 == 0x00110023))
+                    If ((IIA0 == 0x00120075))
+                    If ((IIA0 == 0x00130025))
+                    If ((IIA0 == 0x0012007A))
+                    If ((IIA0 == 0x00060059))
+                    If ((IIA0 == 0x0012007E))
+                    If ((IIA0 == 0x0012007F))
+                    If ((IIA0 == 0x00060023))
+                    If ((IIA0 == 0x00060026))
+                    If ((IIA0 == 0x001200E2))
+
+
 

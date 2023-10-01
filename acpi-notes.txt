@@ -2,6 +2,9 @@ Asus ALLY ACPI Names
 
 Useful Links:
 https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/bringup/firmware-requirements-for-d3cold.md
+https://alexforencich.com/wiki/en/pcie/hot-reset-linux
+https://www.spinics.net/lists/linux-pci/msg110823.html
+https://lore.kernel.org/lkml/20230424214859.3109-1-mario.limonciello@amd.com/T/
 
 WMI GUID = GUID("{97845ED0-4E6D-11DE-8A39-0800200C9A66}")]
 

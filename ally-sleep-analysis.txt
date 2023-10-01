@@ -1,0 +1,80 @@
+First Sleep causes loss of keyboard
+
+[   72.960850] ACPI: EC: interrupt blocked
+[   73.075829] ACPI: \_SB_.PCI0.GP11: LPI: Device not power manageable
+[   73.075831] ACPI: \_SB_.PCI0.GP12: LPI: Device not power manageable
+[   73.075834] ACPI: \_SB_.PCI0.GPP6: LPI: Device not power manageable
+[   73.075836] ACPI: \_SB_.PCI0.GPP5: LPI: Device not power manageable
+[   73.075837] ACPI: \_SB_.PCI0.GP11.SWUS: LPI: Device not power manageable
+[   73.075839] ACPI: \_SB_.PCI0.GP12.SWUS: LPI: Device not power manageable
+[   73.075841] ACPI: \_SB_.PCI0.GPP6.WLAN: LPI: Device not power manageable
+[   73.075847] ACPI: \_SB_.PCI0.GP18.IPU_: LPI: Device not power manageable
+[   73.075848] ACPI: \_SB_.PCI0.GP19.XHC2: LPI: Constraint not met; min power state:D3hot current power state:D0
+[   73.075851] ACPI: \_SB_.PCI0.GP19.NHI0: LPI: Device not power manageable
+[   73.075853] ACPI: \_SB_.PCI0.GP19.NHI1: LPI: Device not power manageable
+[   73.075855] ACPI: \_SB_.PLTF.C000: LPI: Device not power manageable
+[   73.075857] ACPI: \_SB_.PLTF.C001: LPI: Device not power manageable
+[   73.075859] ACPI: \_SB_.PLTF.C002: LPI: Device not power manageable
+[   73.075861] ACPI: \_SB_.PLTF.C003: LPI: Device not power manageable
+[   73.075864] ACPI: \_SB_.PLTF.C004: LPI: Device not power manageable
+[   73.075867] ACPI: \_SB_.PLTF.C005: LPI: Device not power manageable
+[   73.075869] ACPI: \_SB_.PLTF.C006: LPI: Device not power manageable
+[   73.075872] ACPI: \_SB_.PLTF.C007: LPI: Device not power manageable
+[   73.075873] ACPI: \_SB_.PLTF.C008: LPI: Device not power manageable
+[   73.075875] ACPI: \_SB_.PLTF.C009: LPI: Device not power manageable
+[   73.075877] ACPI: \_SB_.PLTF.C00A: LPI: Device not power manageable
+[   73.075879] ACPI: \_SB_.PLTF.C00B: LPI: Device not power manageable
+[   73.075882] ACPI: \_SB_.PLTF.C00C: LPI: Device not power manageable
+[   73.075883] ACPI: \_SB_.PLTF.C00D: LPI: Device not power manageable
+[   73.075885] ACPI: \_SB_.PLTF.C00E: LPI: Device not power manageable
+[   73.075888] ACPI: \_SB_.PLTF.C00F: LPI: Device not power manageable
+[   74.922792] ACPI: EC: ACPI EC GPE status set
+[   74.922805] ACPI: EC: ACPI EC GPE dispatched
+[   74.923473] ACPI: EC: ACPI EC work flushed
+[   74.923475] ACPI: PM: Rearming ACPI SCI for wakeup
+[   74.923567] ACPI: EC: ACPI EC GPE status set
+[   74.923576] ACPI: PM: Rearming ACPI SCI for wakeup
+[   75.460058] ACPI: PM: Wakeup unrelated to ACPI SCI
+[   75.463129] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.PCI0.SBRG.EC0.LID], AE_NOT_FOUND (20230331/psargs-330)
+[   75.463137] ACPI Error: Aborting method \_SB.PEP._DSM due to previous error (AE_NOT_FOUND) (20230331/psparse-529)
+[   75.463249] ACPI: EC: interrupt unblocked
+
+
+Second sleep brings N-Key back (Notice there is no EC flush)
+
+[  125.055022] ACPI: EC: interrupt blocked
+[  125.182659] ACPI: \_SB_.PCI0.GP19.XHC2: LPI: Constraint not met; min power state:D3hot current power state:D0
+[  128.139644] ACPI: PM: Wakeup unrelated to ACPI SCI
+[  128.143115] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.PCI0.SBRG.EC0.LID], AE_NOT_FOUND (20230331/psargs-330)
+[  128.143123] ACPI Error: Aborting method \_SB.PEP._DSM due to previous error (AE_NOT_FOUND) (20230331/psparse-529)
+[  128.143149] clocksource:                       'acpi_pm' wd_nsec: 0 wd_now: 568ae wd_last: 5e4130 mask: ffffff
+[  128.143157] clocksource:                       Clocksource 'tsc' skewed 3060334370 ns (3060 ms) over watchdog 'acpi_pm' interval of 0 ns (0 ms)
+[  128.143371] ACPI: EC: interrupt unblocked
+[  128.143822] clocksource: Switched to clocksource acpi_pm
+
+
+
+Third Sleep breaking N-Key again (Another EC flush happens)
+
+[  125.055022] ACPI: EC: interrupt blocked
+[  125.182659] ACPI: \_SB_.PCI0.GP19.XHC2: LPI: Constraint not met; min power state:D3hot current power state:D0
+[  128.139644] ACPI: PM: Wakeup unrelated to ACPI SCI
+[  128.143115] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.PCI0.SBRG.EC0.LID], AE_NOT_FOUND (20230331/psargs-330)
+[  128.143123] ACPI Error: Aborting method \_SB.PEP._DSM due to previous error (AE_NOT_FOUND) (20230331/psparse-529)
+[  128.143149] clocksource:                       'acpi_pm' wd_nsec: 0 wd_now: 568ae wd_last: 5e4130 mask: ffffff
+[  128.143157] clocksource:                       Clocksource 'tsc' skewed 3060334370 ns (3060 ms) over watchdog 'acpi_pm' interval of 0 ns (0 ms)
+[  128.143371] ACPI: EC: interrupt unblocked
+[  128.143822] clocksource: Switched to clocksource acpi_pm
+[  202.145116] ACPI: EC: interrupt blocked
+[  202.347720] ACPI: \_SB_.PCI0.GP19.XHC2: LPI: Constraint not met; min power state:D3hot current power state:D0
+[  203.752803] ACPI: EC: ACPI EC GPE status set
+[  203.752819] ACPI: EC: ACPI EC GPE dispatched
+[  203.756292] ACPI: EC: ACPI EC work flushed
+[  203.756298] ACPI: PM: Rearming ACPI SCI for wakeup
+[  203.756388] ACPI: EC: ACPI EC GPE status set
+[  203.756410] ACPI: PM: Rearming ACPI SCI for wakeup
+[  205.316631] ACPI: PM: Wakeup unrelated to ACPI SCI
+[  205.319264] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.PCI0.SBRG.EC0.LID], AE_NOT_FOUND (20230331/psargs-330)
+[  205.319271] ACPI Error: Aborting method \_SB.PEP._DSM due to previous error (AE_NOT_FOUND) (20230331/psparse-529)
+[  205.319350] ACPI: EC: interrupt unblocked
+
